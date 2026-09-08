@@ -8,6 +8,5 @@ export const SITE = {
   social: [
     { label: "LinkedIn", href: "https://linkedin.com/in/beiacs" },
     { label: "GitHub", href: "https://github.com/bsan02" },
-    { label: "Instagram @prettycoded", href: "https://instagram.com/prettycoded" },
   ],
 };

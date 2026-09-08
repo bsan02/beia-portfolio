@@ -20,9 +20,6 @@ export default function LeadershipPage() {
         <ClusterGallery items={GALLERY_ITEMS} tags={TAGS} />
       </div>
 
-      <p className="mt-6 text-xs text-muted">
-        Placeholder tiles stand in for real event photos — see the setup guide to drop yours in.
-      </p>
     </div>
   );
 }

@@ -9,21 +9,56 @@ import type { GalleryItem } from "@/data/leadership";
 
 type SimNode = GalleryItem & { x: number; y: number; vx?: number; vy?: number };
 
-function layoutCluster(items: GalleryItem[], width: number, height: number) {
+// Space reserved at the bottom of the canvas for the tag bar, and margins so
+// tiles never render underneath it or spill past the edges of the canvas.
+const RESERVED_BOTTOM = 110;
+const MARGIN_TOP = 20;
+const MIN_TILE_H = 36;
+const MAX_TILE_H = 84;
+const TILE_ASPECT = 1.25; // width / height
+const GAP_FACTOR = 1.2; // >1 leaves breathing room between tiles
+
+function computeTileMetrics(count: number, width: number, height: number) {
+  const usableW = Math.max(width - 40, 150);
+  const usableH = Math.max(height - RESERVED_BOTTOM - MARGIN_TOP, 150);
+  const area = usableW * usableH;
+  const perItem = area / Math.max(count, 1);
+  const idealRadius = Math.sqrt(perItem / (2 * Math.sqrt(3) * GAP_FACTOR));
+  let h = idealRadius / 0.8;
+  h = Math.min(Math.max(h, MIN_TILE_H), MAX_TILE_H);
+  const w = h * TILE_ASPECT;
+  const radius = Math.hypot(w / 2, h / 2);
+  return { w, h, radius };
+}
+
+function layoutNodes(items: GalleryItem[], width: number, height: number, radius: number) {
+  const minX = radius;
+  const maxX = Math.max(width - radius, minX + 1);
+  const minY = Math.max(radius * 0.7, 16);
+  const maxY = Math.max(height - RESERVED_BOTTOM - radius * 0.7, minY + 1);
+  const centerX = (minX + maxX) / 2;
+  const centerY = (minY + maxY) / 2;
+
   const nodes: SimNode[] = items.map((item) => ({
     ...item,
-    x: width / 2 + (Math.random() - 0.5) * width * 0.2,
-    y: height / 2 + (Math.random() - 0.5) * height * 0.2,
+    x: centerX + (Math.random() - 0.5) * (maxX - minX) * 0.9,
+    y: centerY + (Math.random() - 0.5) * (maxY - minY) * 0.9,
   }));
 
   const sim = forceSimulation(nodes)
-    .force("x", forceX(width / 2).strength(0.08))
-    .force("y", forceY(height / 2).strength(0.08))
-    .force("charge", forceManyBody().strength(-140))
-    .force("collide", forceCollide(56))
+    .force("x", forceX(centerX).strength(0.05))
+    .force("y", forceY(centerY).strength(0.05))
+    .force("charge", forceManyBody().strength(-60))
+    .force("collide", forceCollide(radius))
     .stop();
 
-  for (let i = 0; i < 200; i += 1) sim.tick();
+  for (let i = 0; i < 240; i += 1) {
+    sim.tick();
+    for (const n of nodes) {
+      n.x = Math.min(Math.max(n.x, minX), maxX);
+      n.y = Math.min(Math.max(n.y, minY), maxY);
+    }
+  }
 
   return nodes.map((n) => ({
     ...n,
@@ -44,6 +79,7 @@ export default function ClusterGallery({
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [focused, setFocused] = useState<GalleryItem | null>(null);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -58,14 +94,32 @@ export default function ClusterGallery({
     return () => observer.disconnect();
   }, []);
 
-  const clustered = useMemo(() => {
-    if (!selectedTag) return [];
-    const filtered = items.filter((i) => i.tags.includes(selectedTag));
-    return layoutCluster(filtered, size.width, size.height);
-  }, [selectedTag, items, size.width, size.height]);
+  const allMetrics = useMemo(
+    () => computeTileMetrics(items.length, size.width, size.height),
+    [items.length, size.width, size.height]
+  );
+  const allLayout = useMemo(
+    () => layoutNodes(items, size.width, size.height, allMetrics.radius),
+    [items, size.width, size.height, allMetrics.radius]
+  );
+  const allLayoutMap = new Map(allLayout.map((n) => [n.id, n]));
+
+  const filteredForTag = useMemo(
+    () => (selectedTag ? items.filter((i) => i.tags.includes(selectedTag)) : []),
+    [items, selectedTag]
+  );
+  const clusterMetrics = useMemo(
+    () => computeTileMetrics(filteredForTag.length || 1, size.width, size.height),
+    [filteredForTag.length, size.width, size.height]
+  );
+  const clustered = useMemo(
+    () =>
+      selectedTag ? layoutNodes(filteredForTag, size.width, size.height, clusterMetrics.radius) : [],
+    [selectedTag, filteredForTag, size.width, size.height, clusterMetrics.radius]
+  );
 
   const clusteredMap = new Map(clustered.map((n) => [n.id, n]));
-  const dark = Boolean(selectedTag);
+  const active = Boolean(selectedTag);
 
   const centroid = clustered.length
     ? {
@@ -77,13 +131,10 @@ export default function ClusterGallery({
   return (
     <div
       ref={containerRef}
-      className={clsx(
-        "relative h-[70vh] min-h-[480px] w-full overflow-hidden rounded-2xl border transition-colors duration-500",
-        dark ? "border-white/10 bg-[#0b0a08]" : "border-line bg-card/30"
-      )}
+      className="relative h-[70vh] min-h-[480px] w-full overflow-hidden rounded-2xl border border-line bg-card/30"
     >
-      {dark && centroid && (
-        <svg className="pointer-events-none absolute inset-0 h-full w-full">
+      {active && centroid && (
+        <svg className="pointer-events-none absolute inset-0 z-0 h-full w-full">
           {clustered.map((n) => (
             <line
               key={n.id}
@@ -93,56 +144,70 @@ export default function ClusterGallery({
               y2={`${n.py}%`}
               stroke="#c8511b"
               strokeWidth={1}
-              strokeOpacity={0.55}
+              strokeOpacity={0.4}
             />
           ))}
         </svg>
       )}
 
       {items.map((item) => {
-        const node = clusteredMap.get(item.id);
-        const inCluster = Boolean(node);
-        const x = dark ? (node ? node.px : item.x) : item.x;
-        const y = dark ? (node ? node.py : item.y) : item.y;
-        const dimmed = dark && !inCluster;
+        const clusterNode = clusteredMap.get(item.id);
+        const inCluster = Boolean(clusterNode);
+        const fallback = allLayoutMap.get(item.id);
+        const x = clusterNode ? clusterNode.px : fallback ? fallback.px : item.x;
+        const y = clusterNode ? clusterNode.py : fallback ? fallback.py : item.y;
+        const dimmed = active && !inCluster;
+        const metrics = inCluster ? clusterMetrics : allMetrics;
+        const isHovered = hoveredId === item.id;
 
         return (
           <motion.button
             key={item.id}
             type="button"
             onClick={() => setFocused(item)}
+            onHoverStart={() => setHoveredId(item.id)}
+            onHoverEnd={() => setHoveredId((current) => (current === item.id ? null : current))}
+            onFocus={() => setHoveredId(item.id)}
+            onBlur={() => setHoveredId((current) => (current === item.id ? null : current))}
             aria-label={`Open ${item.title}`}
             className="absolute -translate-x-1/2 -translate-y-1/2"
-            style={{ left: 0, top: 0 }}
+            style={{ left: 0, top: 0, zIndex: isHovered ? 10 : 1 }}
             animate={{
               left: `${x}%`,
               top: `${y}%`,
-              opacity: dimmed ? 0.08 : 1,
-              scale: dimmed ? 0.8 : 1,
+              width: metrics.w,
+              height: metrics.h,
+              opacity: dimmed ? 0.12 : 1,
+              scale: dimmed ? 0.85 : 1,
             }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            whileHover={dimmed ? undefined : { scale: 1.08 }}
+            whileHover={dimmed ? undefined : { scale: 1.06 }}
           >
-            <Placeholder hue={item.hue} className="h-16 w-20 rounded-lg shadow-lg sm:h-20 sm:w-28" />
+            <Placeholder
+              hue={item.hue}
+              src={item.image}
+              alt={item.title}
+              className="h-full w-full rounded-lg shadow-lg"
+            />
           </motion.button>
         );
       })}
 
       <AnimatePresence>
-        {dark && (
+        {active && (
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedTag(null)}
-            className="absolute right-4 top-4 rounded-full border border-white/20 px-3 py-1 text-xs text-white/80 hover:border-white/50 hover:text-white"
+            className="absolute right-4 top-4 z-20 rounded-full border border-line bg-background/90 px-3 py-1 text-xs text-foreground/70 hover:border-accent hover:text-accent"
           >
             close ×
           </motion.button>
         )}
       </AnimatePresence>
 
-      <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 overflow-x-auto px-4 py-4 sm:justify-center">
+      <div className="absolute inset-x-0 bottom-0 z-20 flex items-center gap-2 overflow-x-auto bg-gradient-to-t from-background via-background/95 to-transparent px-4 pb-4 pt-8 sm:justify-center">
         {tags.map((tag) => (
           <button
             key={tag}
@@ -151,8 +216,6 @@ export default function ClusterGallery({
               "shrink-0 rounded-full border px-4 py-1.5 text-xs font-mono transition-colors sm:text-sm",
               selectedTag === tag
                 ? "border-accent bg-accent text-white"
-                : dark
-                ? "border-white/20 text-white/70 hover:border-white/50"
                 : "border-line text-foreground/70 hover:border-accent hover:text-accent"
             )}
           >
@@ -162,10 +225,7 @@ export default function ClusterGallery({
         <button
           onClick={() => setAboutOpen(true)}
           aria-label="About this gallery"
-          className={clsx(
-            "ml-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border font-mono text-xs",
-            dark ? "border-white/20 text-white/70" : "border-line text-foreground/70"
-          )}
+          className="ml-2 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-line text-xs text-foreground/70"
         >
           i
         </button>
@@ -177,7 +237,7 @@ export default function ClusterGallery({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 z-10 flex items-center justify-center bg-black/70 p-6 backdrop-blur-sm"
+            className="absolute inset-0 z-30 flex items-center justify-center bg-black/70 p-6 backdrop-blur-sm"
             onClick={() => setFocused(null)}
           >
             <motion.div
@@ -185,9 +245,19 @@ export default function ClusterGallery({
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-md rounded-2xl bg-background p-6 text-foreground"
+              className="flex max-h-full w-full max-w-md flex-col overflow-y-auto rounded-2xl bg-background p-6 text-foreground"
             >
-              <Placeholder hue={focused.hue} className="h-40 w-full rounded-xl" />
+              {focused.image ? (
+                <Placeholder
+                  hue={focused.hue}
+                  src={focused.image}
+                  alt={focused.title}
+                  fit="contain"
+                  className="h-[50vh] w-full rounded-xl bg-black/5"
+                />
+              ) : (
+                <Placeholder hue={focused.hue} className="h-40 w-full rounded-xl" />
+              )}
               <h3 className="mt-4 font-serif text-2xl italic">{focused.title}</h3>
               <p className="text-sm text-accent">
                 {focused.org} · {focused.period}
@@ -217,7 +287,7 @@ export default function ClusterGallery({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 z-10 flex items-center justify-center bg-black/70 p-6 backdrop-blur-sm"
+            className="absolute inset-0 z-30 flex items-center justify-center bg-black/70 p-6 backdrop-blur-sm"
             onClick={() => setAboutOpen(false)}
           >
             <motion.div
@@ -226,9 +296,9 @@ export default function ClusterGallery({
             >
               <h3 className="font-serif text-2xl italic">About this gallery</h3>
               <p className="mt-3 text-sm leading-relaxed text-foreground/90">
-                Every node here is a real chapter of leadership, mentorship, or community — from
-                partnership building at Intern Ship to a cross-institutional NSF mentoring network
-                spanning 7 universities. Select a tag to see how these chapters connect.
+                Every node here is a real chapter — conferences, community work, teaching,
+                internships, and hands-on projects. Select a tag to see how these chapters
+                connect.
               </p>
               <p className="mt-4 text-xs text-muted">Tags: {tags.join(", ")}</p>
               <button

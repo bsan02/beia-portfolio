@@ -2,6 +2,7 @@ export type CreativeBlock = {
   id: string;
   title: string;
   hue: number;
+  image?: string;
   caption: string;
 };
 
@@ -11,7 +12,7 @@ export const CREATIVE_INTRO =
 export const CREATIVE_BLOCKS: CreativeBlock[] = [
   {
     id: "photography",
-    title: "Photography — @prettycoded",
+    title: "Photography",
     hue: 340,
     caption:
       "Event and creator photography — covering tech conferences, launches, and community activations around the Bay Area.",
