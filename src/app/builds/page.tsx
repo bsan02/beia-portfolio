@@ -38,6 +38,53 @@ export default function BuildsPage() {
               </li>
             ))}
           </ul>
+
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-1.5 font-mono text-xs text-accent hover:underline"
+            >
+              View on GitHub ↗
+            </a>
+          )}
+
+          {project.proof?.images && project.proof.images.length > 0 && (
+            <div className="mt-8">
+              <p className="font-mono text-xs uppercase tracking-[0.15em] text-muted">Proof of build</p>
+              <div className="mt-3 grid gap-4 sm:grid-cols-2">
+                {project.proof.images.map((img) => (
+                  <a
+                    key={img.src}
+                    href={img.src}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block overflow-hidden rounded-xl border border-line bg-background"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={img.src} alt={img.alt} className="w-full object-contain" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {project.proof?.documents && project.proof.documents.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-4">
+              {project.proof.documents.map((doc) => (
+                <a
+                  key={doc.href}
+                  href={doc.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-xs text-accent hover:underline"
+                >
+                  {doc.label} ↗
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       ))}
 
@@ -62,6 +109,16 @@ export default function BuildsPage() {
                 </li>
               ))}
             </ul>
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 inline-flex items-center gap-1.5 font-mono text-xs text-accent hover:underline"
+              >
+                View on GitHub ↗
+              </a>
+            )}
           </div>
         ))}
       </div>

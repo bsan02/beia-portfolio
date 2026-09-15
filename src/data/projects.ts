@@ -6,6 +6,11 @@ export type Project = {
   summary: string;
   bullets: string[];
   featured?: boolean;
+  github?: string;
+  proof?: {
+    images?: { src: string; alt: string }[];
+    documents?: { label: string; href: string }[];
+  };
 };
 
 export const PROJECTS: Project[] = [
@@ -22,6 +27,7 @@ export const PROJECTS: Project[] = [
       "Built a rigorous verification workflow using assertions, directed tests, and waveform-based debugging to diagnose faulty PC updates, misaligned instruction fetches, and memory-timing bugs.",
     ],
     featured: true,
+    github: "https://github.com/bsan02/riscv-asic-cpu",
   },
   {
     slug: "trust-attestation-infrastructure",
@@ -58,6 +64,29 @@ export const PROJECTS: Project[] = [
     bullets: [
       "Contributed to the battery management system (BMS) supporting the team's electric race vehicle.",
     ],
+    featured: true,
+    proof: {
+      images: [
+        {
+          src: "/images/builds/formula-electric-bms/bms-schematic-overview.png",
+          alt: "KiCad schematic sheet showing battery temperature sensing, cell balancing with transistor switches, and voltage sensing circuitry",
+        },
+        {
+          src: "/images/builds/formula-electric-bms/voltage-sensing-detail.png",
+          alt: "Detail view of the voltage sensing op-amp circuitry using LMV331 comparators",
+        },
+      ],
+      documents: [
+        {
+          label: "BMS Report (PDF)",
+          href: "/documents/formula-electric-bms/BMS-Report.pdf",
+        },
+        {
+          label: "MCU Pinout Reference (PDF)",
+          href: "/documents/formula-electric-bms/MCU-Pinout-Reference.pdf",
+        },
+      ],
+    },
   },
   {
     slug: "two-stage-op-amp",
@@ -68,6 +97,7 @@ export const PROJECTS: Project[] = [
     bullets: [
       "Designed and simulated a two-stage operational amplifier as part of analog IC coursework.",
     ],
+    github: "https://github.com/bsan02/lcd-driver-opamp-sizing",
   },
   {
     slug: "sixt33n",
