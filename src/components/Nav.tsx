@@ -8,7 +8,8 @@ const LINKS = [
   { href: "/experience", label: "Experience" },
   { href: "/builds", label: "Builds" },
   { href: "/leadership", label: "Leadership" },
-  { href: "/creative", label: "Creative" },
+  // Hidden while the Creative section is still being reworked.
+  // { href: "/creative", label: "Creative" },
 ];
 
 export default function Nav() {

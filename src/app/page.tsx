@@ -17,11 +17,12 @@ const SECTIONS = [
     label: "Leadership",
     teaser: "Mentorship cohorts, partnership building, and community across 7+ universities.",
   },
-  {
-    href: "/creative",
-    label: "Creative",
-    teaser: "Photography, fashion, sewing, and everything that doesn't fit on a resume.",
-  },
+  // Hidden while the Creative section is still being reworked.
+  // {
+  //   href: "/creative",
+  //   label: "Creative",
+  //   teaser: "Photography, fashion, sewing, and everything that doesn't fit on a resume.",
+  // },
 ];
 
 const STATS = [

@@ -260,7 +260,8 @@ export default function ClusterGallery({
               )}
               <h3 className="mt-4 font-serif text-2xl italic">{focused.title}</h3>
               <p className="text-sm text-accent">
-                {focused.org} · {focused.period}
+                {focused.org}
+                {focused.period ? ` · ${focused.period}` : ""}
               </p>
               <p className="mt-3 text-sm leading-relaxed text-foreground/90">{focused.blurb}</p>
               <div className="mt-4 flex flex-wrap gap-2">

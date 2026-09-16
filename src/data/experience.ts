@@ -38,7 +38,7 @@ export const SKILLS = {
 
 export const EXPERIENCE: Role[] = [
   {
-    title: "Engineering Project Manager I: AI/ML Data Operations",
+    title: "Engineering Project Manager: AI/ML Data Operations",
     org: "Apple (via INSPYR Solutions)",
     period: "March 2026 – Present",
     bullets: [
