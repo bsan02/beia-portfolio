@@ -36,28 +36,38 @@ const STATS = [
 export default function Home() {
   return (
     <div className="flex flex-col">
-      <section className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 pb-16 pt-20 sm:px-10 sm:pb-24 sm:pt-28">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-          {SITE.role}
-        </p>
-        <RotatingRole />
-        <p className="max-w-xl text-base text-muted sm:text-lg">
-          UC Berkeley EECS grad based in {SITE.location}. I build systems, grow
-          communities, and document both along the way: this is where all three live in one
-          place.
-        </p>
-        <div className="flex flex-wrap gap-3 pt-2">
-          {SITE.social.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-line px-4 py-2 text-sm transition-colors hover:border-accent hover:text-accent"
-            >
-              {s.label}
-            </a>
-          ))}
+      <section className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-6 pb-16 pt-20 sm:px-10 sm:pb-24 sm:pt-28 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+        <div className="flex w-full flex-col gap-6 lg:max-w-xl">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+            {SITE.role}
+          </p>
+          <RotatingRole />
+          <p className="max-w-xl text-base text-muted sm:text-lg">
+            UC Berkeley EECS grad based in {SITE.location}. I build systems, grow
+            communities, and document both along the way: this is where all three live in one
+            place.
+          </p>
+          <div className="flex flex-wrap gap-3 pt-2">
+            {SITE.social.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-line px-4 py-2 text-sm transition-colors hover:border-accent hover:text-accent"
+              >
+                {s.label}
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="w-full max-w-[280px] shrink-0 sm:max-w-xs">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/hero/beia-hero.jpg"
+            alt="Beia Cabrera Sanchez working on her laptop at Apple Park"
+            className="aspect-[3/4] w-full rounded-2xl border border-line object-cover"
+          />
         </div>
       </section>
 
