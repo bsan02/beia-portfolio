@@ -71,12 +71,12 @@ export const PROJECTS: Project[] = [
           src: "/images/builds/formula-electric-bms/bms-schematic-overview.png",
           alt: "KiCad schematic sheet showing battery temperature sensing, cell balancing with transistor switches, and voltage sensing circuitry",
         },
-        {
-          src: "/images/builds/formula-electric-bms/voltage-sensing-detail.png",
-          alt: "Detail view of the voltage sensing op-amp circuitry using LMV331 comparators",
-        },
       ],
       documents: [
+        {
+          label: "Voltage Sensing Detail (image)",
+          href: "/images/builds/formula-electric-bms/voltage-sensing-detail.png",
+        },
         {
           label: "BMS Report (PDF)",
           href: "/documents/formula-electric-bms/BMS-Report.pdf",

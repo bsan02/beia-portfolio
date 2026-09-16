@@ -53,17 +53,17 @@ export default function BuildsPage() {
           {project.proof?.images && project.proof.images.length > 0 && (
             <div className="mt-8">
               <p className="font-mono text-xs uppercase tracking-[0.15em] text-muted">Proof of build</p>
-              <div className="mt-3 grid gap-4 sm:grid-cols-2">
+              <div className="mt-3 flex justify-center">
                 {project.proof.images.map((img) => (
                   <a
                     key={img.src}
                     href={img.src}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block overflow-hidden rounded-xl border border-line bg-background"
+                    className="block w-full max-w-2xl overflow-hidden rounded-xl border border-line bg-background"
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={img.src} alt={img.alt} className="w-full object-contain" />
+                    <img src={img.src} alt={img.alt} className="mx-auto w-full object-contain" />
                   </a>
                 ))}
               </div>
