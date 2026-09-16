@@ -29,6 +29,20 @@ export const PROJECTS: Project[] = [
     ],
     featured: true,
     github: "https://github.com/bsan02/riscv-asic-cpu",
+    proof: {
+      images: [
+        {
+          src: "/images/builds/risc-v-cpu/riscv-cpu-cover.png",
+          alt: "Hand-drawn notes and diagram of the 3-stage pipelined RISC-V datapath, covering instruction fetch, decode/execute, and memory/writeback stages",
+        },
+      ],
+      documents: [
+        {
+          label: "RISC-V Design Notes (PDF)",
+          href: "/documents/risc-v-cpu/riscv-notes.pdf",
+        },
+      ],
+    },
   },
   {
     slug: "trust-attestation-infrastructure",
@@ -38,11 +52,16 @@ export const PROJECTS: Project[] = [
     summary:
       "End-to-end trust infrastructure securing confidential AI/ML workloads across physical hosts and GPUs.",
     bullets: [
-      "Implemented TPM 2.0 remote attestation using PCR-based measured boot and Endorsement Key (EK) certificate validation to verify AHV host integrity before granting Prism Central access.",
-      "Enabled TEE and Confidential Compute mode on NVIDIA H100 GPUs, with per-session service secrets released only after AIK credential activation and PCR quote validation succeed.",
-      "Extended the trust chain to cloud attestation flows with AMD SEV-SNP and NVIDIA Trust Outpost, bridging local and remote host verification.",
+      "Implemented TPM 2.0 remote attestation using PCR-based measured boot and cryptographic verification, enabling secure access control for AHV hosts and NVIDIA H100 GPUs.",
+      "Deployed end-to-end attestation infrastructure integrating cloud flows (AMD SEV-SNP, NVIDIA Trust Outpost) with per-session secrets locked behind AIK credential activation and PCR validation.",
     ],
     proof: {
+      images: [
+        {
+          src: "/images/builds/trust-attestation-infrastructure/nutanix-cover.png",
+          alt: "Nutanix and GPU trust attestation infrastructure project cover",
+        },
+      ],
       documents: [
         {
           label: "Remote Attestation of Physical AHV Host & NVIDIA GPU (Slide Deck)",
@@ -64,6 +83,12 @@ export const PROJECTS: Project[] = [
       "Delivered a gold-standard curated dataset that accelerated downstream ML dataset preparation across the team.",
     ],
     proof: {
+      images: [
+        {
+          src: "/images/builds/url-data-pipeline/citylitics-cover.png",
+          alt: "18M+ URL Data Integration Pipeline project cover",
+        },
+      ],
       documents: [
         {
           label: "18M+ URL Data Integration Pipeline (Slide Deck)",
