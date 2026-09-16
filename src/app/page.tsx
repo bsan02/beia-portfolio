@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE } from "@/data/site";
+import RotatingRole from "@/components/RotatingRole";
 
 const SECTIONS = [
   {
@@ -39,11 +40,9 @@ export default function Home() {
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           {SITE.role}
         </p>
-        <h1 className="max-w-3xl font-serif text-4xl italic leading-tight tracking-tight sm:text-6xl">
-          {SITE.tagline}
-        </h1>
+        <RotatingRole />
         <p className="max-w-xl text-base text-muted sm:text-lg">
-          UC Berkeley EECS grad ({"'"}25) based in {SITE.location}. I build systems, grow
+          UC Berkeley EECS grad based in {SITE.location}. I build systems, grow
           communities, and document both along the way: this is where all three live in one
           place.
         </p>
