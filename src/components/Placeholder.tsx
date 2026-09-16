@@ -17,7 +17,7 @@ export default function Placeholder({
 }) {
   if (src) {
     if (fit === "contain") {
-      // Center the whole image within the box without cropping — used for the
+      // Center the whole image within the box without cropping, used for the
       // focused-photo modal, where portrait photos must never be clipped.
       return (
         <div className={clsx("relative flex items-center justify-center overflow-hidden", className)}>

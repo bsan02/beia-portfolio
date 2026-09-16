@@ -3,7 +3,7 @@ import Placeholder from "@/components/Placeholder";
 import { CREATIVE_BLOCKS, CREATIVE_INTRO } from "@/data/creative";
 
 export const metadata: Metadata = {
-  title: "Creative — Beia Cabrera Sanchez",
+  title: "Creative | Beia Cabrera Sanchez",
 };
 
 export default function CreativePage() {

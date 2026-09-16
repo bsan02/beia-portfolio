@@ -1,4 +1,4 @@
-# beia-portfolio — setup notes
+# beia-portfolio: setup notes
 
 ## 0. One-time cleanup (only needed the first time)
 While building this with you I hit a permission quirk installing packages

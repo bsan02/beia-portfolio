@@ -3,7 +3,7 @@ import ClusterGallery from "@/components/ClusterGallery";
 import { GALLERY_ITEMS, TAGS } from "@/data/leadership";
 
 export const metadata: Metadata = {
-  title: "Leadership — Beia Cabrera Sanchez",
+  title: "Leadership | Beia Cabrera Sanchez",
 };
 
 export default function LeadershipPage() {
@@ -13,7 +13,7 @@ export default function LeadershipPage() {
       <h1 className="mt-4 font-serif text-4xl italic sm:text-5xl">Who I{"'"}ve shown up for.</h1>
       <p className="mt-4 max-w-xl text-muted">
         Scattered below are the clubs, cohorts, and communities I{"'"}ve been part of. Select a tag
-        to pull the related chapters into a cluster — everything is connected to something.
+        to pull the related chapters into a cluster: everything is connected to something.
       </p>
 
       <div className="mt-10">

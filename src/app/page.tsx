@@ -5,7 +5,7 @@ const SECTIONS = [
   {
     href: "/experience",
     label: "Experience",
-    teaser: "Apple, Nutanix, Citylitics — shipping ML data infrastructure and trust systems.",
+    teaser: "Apple, Nutanix, Citylitics: shipping ML data infrastructure and trust systems.",
   },
   {
     href: "/builds",
@@ -43,7 +43,7 @@ export default function Home() {
         </h1>
         <p className="max-w-xl text-base text-muted sm:text-lg">
           UC Berkeley EECS grad ({"'"}25) based in {SITE.location}. I build systems, grow
-          communities, and document both along the way — this is where all three live in one
+          communities, and document both along the way: this is where all three live in one
           place.
         </p>
         <div className="flex flex-wrap gap-3 pt-2">

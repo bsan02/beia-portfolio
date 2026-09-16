@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Beia Cabrera Sanchez",
   description:
-    "Builder, entrepreneur, and creative — portfolio of projects, professional experience, and leadership.",
+    "Builder, entrepreneur, and creative: portfolio of projects, professional experience, and leadership.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

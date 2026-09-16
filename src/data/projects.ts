@@ -141,7 +141,7 @@ export const PROJECTS: Project[] = [
     bullets: [
       "Designed a two-stage op-amp: a telescopic cascode first stage for high gain and a class AB second stage for low quiescent current, linked by a Miller compensation cap.",
       "Sized transistors and a 7.25:1 current-mirror bias to hit a closed-loop gain of 2 while meeting a 180ns settling-time spec.",
-      "Simulated 65.4° phase margin, 0.044% total error, and 138.3ns settling time at 801.6µW — beating the target static and dynamic error budgets.",
+      "Simulated 65.4° phase margin, 0.044% total error, and 138.3ns settling time at 801.6µW, beating the target static and dynamic error budgets.",
     ],
     github: "https://github.com/bsan02/lcd-driver-opamp-sizing",
     proof: {
@@ -161,7 +161,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "sixt33n",
-    title: "SIXT33N — Voice-Controlled Car",
+    title: "SIXT33N: Voice-Controlled Car",
     period: "Student project",
     stack: ["Embedded Systems", "Signal Processing"],
     summary: "A voice-controlled car built for an embedded systems design course.",

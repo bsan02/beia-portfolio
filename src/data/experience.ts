@@ -38,7 +38,7 @@ export const SKILLS = {
 
 export const EXPERIENCE: Role[] = [
   {
-    title: "Engineering Project Manager I — AI/ML Data Operations",
+    title: "Engineering Project Manager I: AI/ML Data Operations",
     org: "Apple (via INSPYR Solutions)",
     period: "March 2026 – Present",
     bullets: [
@@ -62,7 +62,7 @@ export const EXPERIENCE: Role[] = [
     org: "Citylitics",
     period: "May 2025 – July 2025",
     bullets: [
-      "Built data integration pipelines that automated extraction from Citylitics' web crawler, cleaning and curating 18M+ URLs into BigQuery with SQL — cutting noise by ~70% and halving query runtime.",
+      "Built data integration pipelines that automated extraction from Citylitics' web crawler, cleaning and curating 18M+ URLs into BigQuery with SQL: cutting noise by ~70% and halving query runtime.",
       "Designed a human-in-the-loop labeling pipeline with anomaly detection and continuous updates to improve document vs. webpage classification accuracy in production ML models.",
       "Drove the creation of a gold-standard curated dataset to accelerate ML dataset preparation and strengthen the reliability of the company's infrastructure intelligence platform.",
     ],

@@ -87,7 +87,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
  
   {
     id: "argentina-3",
-    title: "Buenos Aires — Photo 3",
+    title: "Buenos Aires: Photo 3",
     org: "UTK",
     period: "Community program",
     tags: ["Teaching"],
@@ -99,7 +99,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "argentina-4",
-    title: "Buenos Aires — Photo 4",
+    title: "Buenos Aires: Photo 4",
     org: "UTK",
     period: "Community program",
     tags: ["Teaching"],
@@ -111,7 +111,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "argentina-5",
-    title: "Buenos Aires — Photo 5",
+    title: "Buenos Aires: Photo 5",
     org: "UTK",
     period: "Community program",
     tags: ["Teaching"],
@@ -123,7 +123,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "argentina-6",
-    title: "Buenos Aires — Photo 6",
+    title: "Buenos Aires: Photo 6",
     org: "UTK",
     period: "Community program",
     tags: ["Teaching"],
@@ -135,7 +135,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "argentina-8",
-    title: "Buenos Aires — Photo 8",
+    title: "Buenos Aires: Photo 8",
     org: "UTK",
     period: "Community program",
     tags: ["Teaching"],
@@ -147,7 +147,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "argentina-9",
-    title: "Buenos Aires — Photo 9",
+    title: "Buenos Aires: Photo 9",
     org: "UTK",
     period: "Community program",
     tags: ["Teaching"],
@@ -159,7 +159,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "argentina-10",
-    title: "Buenos Aires — Photo 10",
+    title: "Buenos Aires: Photo 10",
     org: "UTK",
     period: "Community program",
     tags: ["Teaching"],
@@ -171,7 +171,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "argentina-11",
-    title: "Buenos Aires — Photo 11",
+    title: "Buenos Aires: Photo 11",
     org: "UTK",
     period: "Community program",
     tags: ["Teaching"],
@@ -183,7 +183,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "argentina-12",
-    title: "Buenos Aires — Photo 12",
+    title: "Buenos Aires: Photo 12",
     org: "UTK",
     period: "Community program",
     tags: ["Teaching"],
@@ -232,7 +232,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "conf-night-bean",
-    title: "Bean — Night",
+    title: "Bean: Night",
     org: "Conference",
     period: "Ongoing",
     tags: ["Conferences"],
@@ -256,7 +256,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "conf-ghc-sign",
-    title: "Grace Hopper Celebration — Sign",
+    title: "Grace Hopper Celebration: Sign",
     org: "Grace Hopper Celebration",
     period: "Ongoing",
     tags: ["Conferences"],
@@ -304,7 +304,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "conf-group-shpe",
-    title: "SHPE — Group",
+    title: "SHPE: Group",
     org: "Society of Hispanic Professional Engineers",
     period: "Ongoing",
     tags: ["Conferences"],
@@ -316,7 +316,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "proj-opamp-schematic",
-    title: "Two-Stage Op-Amp — Schematic",
+    title: "Two-Stage Op-Amp: Schematic",
     org: "UC Berkeley EECS",
     period: "Student project",
     tags: ["Projects"],
@@ -329,12 +329,12 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "proj-sixt33n-1",
-    title: "SIXT33N — Voice-Controlled Car",
+    title: "SIXT33N: Voice-Controlled Car",
     org: "UC Berkeley EECS (EE 16B)",
     period: "Student project",
     tags: ["Projects"],
     blurb:
-      "The voice-controlled car built for EE 16B — breadboard circuitry, an Arduino, and a mic board wired onto the chassis.",
+      "The voice-controlled car built for EE 16B: breadboard circuitry, an Arduino, and a mic board wired onto the chassis.",
     hue: 46,
     image: "/images/leadership/Projects/s1Xteen_car.jpeg",
     x: 40,
@@ -342,7 +342,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "proj-sixt33n-2",
-    title: "SIXT33N — Circuit Detail",
+    title: "SIXT33N: Circuit Detail",
     org: "UC Berkeley EECS (EE 16B)",
     period: "Student project",
     tags: ["Projects"],
@@ -365,6 +365,33 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     image: "/images/leadership/Projects/BYOW.jpeg",
     x: 25,
     y: 45,
+  },
+  
+  {
+    id: "proj-sixt33n-cad",
+    title: "SIXT33N: CAD Design",
+    org: "UC Berkeley EECS (EE 16B)",
+    period: "Student project",
+    tags: ["Projects"],
+    blurb:
+      "Tinkercad CAD model of the SIXT33N chassis: motor mounts, wheels, ultrasonic sensors, and the breadboard mounting plate.",
+    hue: 76,
+    image: "/images/leadership/Projects/sixt33n_cad_design.png",
+    x: 45,
+    y: 42,
+  },
+  {
+    id: "proj-opamp-sim-results",
+    title: "Two-Stage Op-Amp: Simulation Results",
+    org: "UC Berkeley EECS",
+    period: "Student project",
+    tags: ["Projects"],
+    blurb:
+      "Cadence Virtuoso ADE Explorer results for the two-stage op-amp: rise/fall time, settling time, and power across corner cases.",
+    hue: 94,
+    image: "/images/leadership/Projects/opamp_sim_results.png",
+    x: 30,
+    y: 65,
   },
   {
     id: "proj-breadboard-logic",
@@ -395,12 +422,12 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "proj-chalkboard-amp-design",
-    title: "Amplifier Design — Chalkboard",
+    title: "Amplifier Design: Chalkboard",
     org: "UC Berkeley EECS",
     period: "Student project",
     tags: ["Projects"],
     blurb:
-      "Working out common-source and cascode amplifier stages — MOSFET small-signal models, bias points, and gain equations.",
+      "Working out common-source and cascode amplifier stages: MOSFET small-signal models, bias points, and gain equations.",
     hue: 70,
     image: "/images/leadership/Projects/chalk.JPG",
     x: 80,
@@ -409,7 +436,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   
   {
     id: "proj-scope-bench-test",
-    title: "Bench Testing — Soda Hall",
+    title: "Bench Testing: Soda Hall",
     org: "UC Berkeley EECS",
     period: "Student project",
     tags: ["Projects"],
@@ -427,7 +454,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     period: "December 2025",
     tags: ["Community"],
     blurb:
-      "Walking at commencement in Haas Pavilion — the finish line for four years at Cal.",
+      "Walking at commencement in Haas Pavilion: the finish line for four years at Cal.",
     hue: 100,
     image: "/images/leadership/Community/grad.JPG",
     x: 10,
@@ -439,7 +466,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     org: "UC Berkeley",
     period: "Ongoing",
     tags: ["Community"],
-    blurb: "A campus tradition — posing with Oski the Bear.",
+    blurb: "A campus tradition: posing with Oski the Bear.",
     hue: 105,
     image: "/images/leadership/Community/oski.jpeg",
     x: 30,
@@ -447,7 +474,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "comm-calday-1",
-    title: "Cal Day — Campus Car Show",
+    title: "Cal Day: Campus Car Show",
     org: "UC Berkeley",
     period: "Cal Day",
     tags: ["Community"],
@@ -513,7 +540,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     org: "Nutanix",
     period: "Internship",
     tags: ["Internship"],
-    blurb: "A moment from the Nutanix Hackathon — Intern Edition.",
+    blurb: "A moment from the Nutanix Hackathon: Intern Edition.",
     hue: 300,
     image: "/images/leadership/Nutanix-Citylitics-Edge/Hackathon1.JPG",
     x: 8,
@@ -525,7 +552,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     org: "Nutanix",
     period: "Internship",
     tags: ["Internship"],
-    blurb: "With the team at the Nutanix Hackathon — Intern Edition.",
+    blurb: "With the team at the Nutanix Hackathon: Intern Edition.",
     hue: 303,
     image: "/images/leadership/Nutanix-Citylitics-Edge/Hackathon2.jpg",
     x: 22,
@@ -533,7 +560,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "nutanix-intern-day-portrait",
-    title: "National Intern Day — Portrait",
+    title: "National Intern Day: Portrait",
     org: "Nutanix",
     period: "Internship",
     tags: ["Internship"],
@@ -545,7 +572,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "nutanix-office-lobby",
-    title: "Nutanix Office — Lobby",
+    title: "Nutanix Office: Lobby",
     org: "Nutanix",
     period: "Internship",
     tags: ["Internship"],
@@ -569,7 +596,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "nutanix-15-years",
-    title: "Nutanix — 15 Years",
+    title: "Nutanix: 15 Years",
     org: "Nutanix",
     period: "Internship",
     tags: ["Internship"],
@@ -593,7 +620,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "edge-cleanroom-group",
-    title: "EDGE Consortium — Cleanroom",
+    title: "EDGE Consortium: Cleanroom",
     org: "EDGE Consortium",
     period: "Internship",
     tags: ["Internship"],
@@ -615,21 +642,10 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     x: 70,
     y: 92,
   },
-  {
-    id: "edge-cleanroom-suit",
-    title: "Cleanroom Suit Up",
-    org: "EDGE Consortium",
-    period: "Internship",
-    tags: ["Internship"],
-    blurb: "Gowned up for a nanofabrication cleanroom tour.",
-    hue: 336,
-    image: "/images/leadership/Nutanix-Citylitics-Edge/UW1.jpeg",
-    x: 85,
-    y: 8,
-  },
+
   {
     id: "edge-cleanroom-hallway",
-    title: "Cleanroom — Group",
+    title: "Cleanroom: Group",
     org: "EDGE Consortium",
     period: "Internship",
     tags: ["Internship"],
@@ -653,7 +669,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "citylitics-toronto-view",
-    title: "Toronto — Office View",
+    title: "Toronto: Office View",
     org: "Citylitics",
     period: "Internship",
     tags: ["Internship"],
@@ -665,7 +681,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "tribexr-pitch-forum",
-    title: "Tribe XR — Pitch Forum",
+    title: "Tribe XR: Pitch Forum",
     org: "Tribe XR",
     period: "Internship",
     tags: ["Internship"],

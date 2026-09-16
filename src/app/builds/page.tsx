@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PROJECTS } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Builds — Beia Cabrera Sanchez",
+  title: "Builds | Beia Cabrera Sanchez",
 };
 
 export default function BuildsPage() {
@@ -11,7 +11,7 @@ export default function BuildsPage() {
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Builds</p>
       <h1 className="mt-4 font-serif text-4xl italic sm:text-5xl">Things I{"'"}ve made.</h1>
       <p className="mt-4 max-w-xl text-muted">
-        From a pipelined CPU to trust infrastructure securing GPU workloads — the projects I{"'"}ve
+        From a pipelined CPU to trust infrastructure securing GPU workloads: the projects I{"'"}ve
         built, broken, and rebuilt.
       </p>
 

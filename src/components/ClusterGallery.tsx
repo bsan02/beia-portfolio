@@ -296,7 +296,7 @@ export default function ClusterGallery({
             >
               <h3 className="font-serif text-2xl italic">About this gallery</h3>
               <p className="mt-3 text-sm leading-relaxed text-foreground/90">
-                Every node here is a real chapter — conferences, community work, teaching,
+                Every node here is a real chapter: conferences, community work, teaching,
                 internships, and hands-on projects. Select a tag to see how these chapters
                 connect.
               </p>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { EDUCATION, EXPERIENCE, SKILLS } from "@/data/experience";
 
 export const metadata: Metadata = {
-  title: "Experience — Beia Cabrera Sanchez",
+  title: "Experience | Beia Cabrera Sanchez",
 };
 
 export default function ExperiencePage() {
