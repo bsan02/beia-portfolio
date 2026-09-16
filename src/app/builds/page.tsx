@@ -70,6 +70,23 @@ export default function BuildsPage() {
             </div>
           )}
 
+          {project.proof?.videos && project.proof.videos.length > 0 && (
+            <div className="mt-8">
+              <p className="font-mono text-xs uppercase tracking-[0.15em] text-muted">Proof of build</p>
+              <div className="mt-3 flex flex-col items-center gap-2">
+                {project.proof.videos.map((v) => (
+                  <div
+                    key={v.src}
+                    className="w-full max-w-2xl overflow-hidden rounded-xl border border-line bg-background"
+                  >
+                    <video src={v.src} controls playsInline className="w-full" />
+                    {v.caption && <p className="px-4 py-3 text-xs text-muted">{v.caption}</p>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {project.proof?.documents && project.proof.documents.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-4">
               {project.proof.documents.map((doc) => (
@@ -118,6 +135,50 @@ export default function BuildsPage() {
               >
                 View on GitHub ↗
               </a>
+            )}
+
+            {project.proof?.images && project.proof.images.length > 0 && (
+              <div className="mt-2 flex flex-col gap-2">
+                {project.proof.images.map((img) => (
+                  <a
+                    key={img.src}
+                    href={img.src}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block overflow-hidden rounded-lg border border-line bg-background"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={img.src} alt={img.alt} className="w-full object-contain" />
+                  </a>
+                ))}
+              </div>
+            )}
+
+            {project.proof?.videos && project.proof.videos.length > 0 && (
+              <div className="mt-2 flex flex-col gap-2">
+                {project.proof.videos.map((v) => (
+                  <div key={v.src} className="overflow-hidden rounded-lg border border-line bg-background">
+                    <video src={v.src} controls playsInline className="w-full" />
+                    {v.caption && <p className="px-3 py-2 text-xs text-muted">{v.caption}</p>}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {project.proof?.documents && project.proof.documents.length > 0 && (
+              <div className="mt-1 flex flex-wrap gap-3">
+                {project.proof.documents.map((doc) => (
+                  <a
+                    key={doc.href}
+                    href={doc.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-xs text-accent hover:underline"
+                  >
+                    {doc.label} ↗
+                  </a>
+                ))}
+              </div>
             )}
           </div>
         ))}
