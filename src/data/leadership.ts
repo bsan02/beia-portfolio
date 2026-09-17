@@ -368,13 +368,13 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   
   {
-    id: "proj-sixt33n-cad",
-    title: "SIXT33N: CAD Design",
-    org: "UC Berkeley EECS (EE 16B)",
-    period: "Student project",
+    id: "sumo-bot",
+    title: "SUMO Robot CAD Design",
+    org: "UTK Stem Mentor",
+    period: "Buenos Aires, Argentina",
     tags: ["Projects"],
     blurb:
-      "Tinkercad CAD model of the SIXT33N chassis: motor mounts, wheels, ultrasonic sensors, and the breadboard mounting plate.",
+      "Designed and built a sumo robot as a classroom activity to exposure the youth to robotics",
     hue: 76,
     image: "/images/leadership/Projects/sixt33n_cad_design.png",
     x: 45,
@@ -385,7 +385,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Two-Stage Op-Amp: Simulation Results",
     org: "UC Berkeley EECS",
     period: "Student project",
-    tags: ["Projects"],
+    tags: ["Projects", "Teaching"],
     blurb:
       "Cadence Virtuoso ADE Explorer results for the two-stage op-amp: rise/fall time, settling time, and power across corner cases.",
     hue: 94,
