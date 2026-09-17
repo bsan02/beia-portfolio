@@ -372,7 +372,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "SUMO Robot CAD Design",
     org: "UTK Stem Mentor",
     period: "Buenos Aires, Argentina",
-    tags: ["Projects"],
+    tags: ["Projects", "Teaching"],
     blurb:
       "Designed and built a sumo robot as a classroom activity to exposure the youth to robotics",
     hue: 76,
@@ -385,7 +385,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Two-Stage Op-Amp: Simulation Results",
     org: "UC Berkeley EECS",
     period: "Student project",
-    tags: ["Projects", "Teaching"],
+    tags: ["Projects"],
     blurb:
       "Cadence Virtuoso ADE Explorer results for the two-stage op-amp: rise/fall time, settling time, and power across corner cases.",
     hue: 94,
